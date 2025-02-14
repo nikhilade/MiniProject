@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter, Routes, Route, NavLink } from "react-router-dom";
 import AddNewQuestion from "./AddNewQuestion";
 import ViewAllQuestion from "./ViewAllQuestion";
@@ -7,6 +7,10 @@ import ScheduleExam from "./ScheduleExam";
 import Result from "./Result";
 
 let NavBar = () => {
+  let [list, setList] = useState([]);
+  let handleCallback = (childData) => {
+    setList(childData);
+  };
   return (
     <>
       <BrowserRouter>
@@ -83,7 +87,10 @@ let NavBar = () => {
           </div>
         </nav>
         <Routes>
-          <Route path="add-new-question" element={<AddNewQuestion />} />
+          <Route
+            path="add-new-question"
+            element={<AddNewQuestion parentCallback={handleCallback} />}
+          />
           <Route path="view-all-question" element={<ViewAllQuestion />} />
           <Route path="schedule-exam" element={<ScheduleExam />} />
           <Route path="start-exam" element={<StartExam />} />

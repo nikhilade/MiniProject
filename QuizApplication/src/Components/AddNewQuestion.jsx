@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const AddNewQuestion = () => {
+const AddNewQuestion = (props) => {
   let [ques, setQues] = useState({
     id: 0,
     question: "",
@@ -22,6 +22,7 @@ const AddNewQuestion = () => {
     });
 
     setList([...list, ques]);
+    props.parentCallback(list);
     alert(list.length);
   };
 
