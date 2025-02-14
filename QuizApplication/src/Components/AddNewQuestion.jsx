@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 const AddNewQuestion = (props) => {
   let [ques, setQues] = useState({
-    id: 0,
+    id: 1,
     question: "",
     op1: "",
     op2: "",
@@ -12,6 +12,15 @@ const AddNewQuestion = (props) => {
   });
 
   let [list, setList] = useState([]);
+
+  let uniHandler = (e) => {
+    setQues((prevState) => {
+      return {
+        ...prevState,
+        [e.target.name]: e.target.value,
+      };
+    });
+  };
 
   let saveQuestion = () => {
     setQues((prevState) => {
@@ -24,15 +33,6 @@ const AddNewQuestion = (props) => {
     setList([...list, ques]);
     props.parentCallback(list);
     alert(list.length);
-  };
-
-  let uniHandler = (e) => {
-    setQues((prevState) => {
-      return {
-        ...prevState,
-        [e.target.name]: e.target.value,
-      };
-    });
   };
 
   return (

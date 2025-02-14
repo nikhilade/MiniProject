@@ -91,7 +91,10 @@ let NavBar = () => {
             path="add-new-question"
             element={<AddNewQuestion parentCallback={handleCallback} />}
           />
-          <Route path="view-all-question" element={<ViewAllQuestion />} />
+          <Route
+            path="view-all-question"
+            element={<ViewAllQuestion questionList={list} />}
+          />
           <Route path="schedule-exam" element={<ScheduleExam />} />
           <Route path="start-exam" element={<StartExam />} />
           <Route path="result" element={<Result />} />
